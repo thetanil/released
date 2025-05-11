@@ -23,3 +23,4 @@ jobs:
         run: |
           . ./VERSION.env
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+
