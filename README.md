@@ -10,3 +10,16 @@ status overview for multiple release branches
 - commit new VERSION.env
 - push new release branch
     - ```git push -u origin release/v0.1.1```
+
+## another one
+
+ 2056  git checkout main
+ 2057  git pull
+ 2058  git checkout -b release/v0.2.0
+
+## this is all very wrong
+
+v0.2.2
+
+second push should be rejected
+
