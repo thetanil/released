@@ -19,4 +19,4 @@ status overview for multiple release branches
 
 ## this is all very wrong
 
-vDev
+v0.2.2
