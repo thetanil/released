@@ -1,0 +1,35 @@
+{
+    "name": "released",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".",
+        "args": {
+            "VARIANT": "11.11-slim",
+            "ARCH": "arm64"
+        }
+    },
+    "runArgs": [
+        "--shm-size=500mb"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "sh",
+                "editor.formatOnSave": true,
+                "python.pythonPath": "/usr/bin/python",
+                "go.useLanguageServer": true
+            },
+            "extensions": [
+                "task.vscode-task",
+                "eliostruyf.vscode-front-matter",
+                "dnut.rewrap-revived",
+                "jinliming2.vscode-go-template"
+            ]
+        }
+    },
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind"
+    ],
+    "workspaceFolder": "/home/vscode/workspace"
+}

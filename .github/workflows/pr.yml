@@ -1,15 +1,10 @@
 name: Create Release
 
 on:
-  push:
-    branches:
-      - release/* # Trigger on any branch starting with "release/"
-
-permissions:
-  contents: write
+  pull_request:
 
 jobs:
-  create-release:
+  pr:
     name: Create GitHub Release
     runs-on: ubuntu-latest
 
@@ -53,15 +48,3 @@ jobs:
             --workdir /workspace \
             devcontainer:latest \
             task build
-
-      - name: Release
-        # based on https://github.com/softprops/action-gh-release
-        uses: ./actions/action-gh-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.ref_type == 'tag'
-        with:
-          files: |
-            VERSION.env
-            LICENSE
-            README.md

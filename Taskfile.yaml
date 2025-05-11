@@ -1,0 +1,27 @@
+version: "3"
+
+tasks:
+  default:
+    desc: "Run all tasks"
+    cmds:
+      - task: lint
+      - task: test
+      - task: build
+
+  lint:
+    desc: "Run linters"
+    cmds:
+      - echo "Running linters..."
+      - echo "Linters completed."
+
+  test:
+    desc: "Run tests"
+    cmds:
+      - echo "Running tests..."
+      - echo "Tests completed."
+
+  build:
+    desc: "Build the project"
+    cmds:
+      - echo "Building the project..."
+      - echo "Build completed."
