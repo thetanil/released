@@ -1,0 +1,6 @@
+[submodule "demopy"]
+	path = demopy
+	url = https://github.com/thetanil/demopy.git
+[submodule "democmake"]
+	path = democmake
+	url = https://github.com/thetanil/democmake.git
