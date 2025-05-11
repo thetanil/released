@@ -21,8 +21,4 @@ status overview for multiple release branches
 
 v0.2.2
 
-<<<<<<< HEAD
-second push should be rejected
-=======
->>>>>>> main
 
