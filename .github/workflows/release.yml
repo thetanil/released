@@ -17,6 +17,24 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          submodules: "recursive" # Fetch submodules if needed
+
+      - name: build
+        run: |
+          # build the dev container
+          docker build \
+            --file .devcontainer/Dockerfile \
+            --tag devcontainer:latest \
+            --build-arg VERSION=${{ github.ref_name }} \
+            .
+          docker run \
+            --rm \
+            --name devcontainer \
+            --volume ${{ github.workspace }}:/workspace \
+            --workdir /workspace \
+            devcontainer:latest \
+            task build
 
       - name: Release
         # based on https://github.com/softprops/action-gh-release
