@@ -1,0 +1,50 @@
+name: Create Release
+
+on:
+  pull_request:
+
+jobs:
+  pr:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: "recursive" # Fetch submodules if needed
+
+      - name: Task-Lint
+        run: |
+          # build the dev container
+          # TODO: extract to a reusable action
+          docker build \
+            --file .devcontainer/Dockerfile \
+            --tag devcontainer:latest \
+            --build-arg VERSION=${{ github.ref_name }} \
+            .
+          docker run \
+            --rm \
+            --name devcontainer \
+            --volume ${{ github.workspace }}:/workspace \
+            --workdir /workspace \
+            devcontainer:latest \
+            task build
+
+      - name: Task-Build
+        run: |
+          # build the dev container
+          # TODO: extract to a reusable action
+          docker build \
+            --file .devcontainer/Dockerfile \
+            --tag devcontainer:latest \
+            --build-arg VERSION=${{ github.ref_name }} \
+            .
+          docker run \
+            --rm \
+            --name devcontainer \
+            --volume ${{ github.workspace }}:/workspace \
+            --workdir /workspace \
+            devcontainer:latest \
+            task build
