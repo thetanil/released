@@ -1,8 +1,6 @@
 name: Create Release
 
 on:
-  pull_request:
-
   push:
     branches:
       - release/* # Trigger on any branch starting with "release/"
