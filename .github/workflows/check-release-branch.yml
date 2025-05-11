@@ -1,0 +1,15 @@
+name: Release Branch Check
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  check-release-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: protect main branch from non-release branche merges
+        run: |
+          if [[ ! "${{ github.head_ref }}" =~ ^release\/ ]]; then
+            echo "Only release branches can merge into main."
+            exit 1
+          fi

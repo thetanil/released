@@ -18,12 +18,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Load the VERSION from the env file
-      - name: Load version
-        run: |
-          . ./VERSION.env
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
       - name: Release
         # based on https://github.com/softprops/action-gh-release
         uses: ./actions/action-gh-release
