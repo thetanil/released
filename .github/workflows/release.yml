@@ -25,7 +25,13 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Release
+        # based on https://github.com/softprops/action-gh-release
         uses: ./actions/action-gh-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: github.ref_type == 'tag'
+        with:
+          files: |
+            VERSION.env
+            LICENSE
+            README.md
