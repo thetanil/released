@@ -5,6 +5,9 @@ on:
     branches:
       - release/* # Trigger on any branch starting with "release/"
 
+permissions:
+  contents: write
+
 jobs:
   create-release:
     name: Create GitHub Release
@@ -21,12 +24,8 @@ jobs:
           . ./VERSION.env
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      # Create a GitHub release
-      - name: Create Release
-        uses: actions/create-release@v1
-        with:
-          tag_name: "v${{ env.VERSION }}"
-          release_name: "Release v${{ env.VERSION }}"
-          body: "Automated release for version v${{ env.VERSION }}"
-          draft: true
-          prerelease: true
+      - name: Release
+        uses: ./actions/action-gh-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref_type == 'tag'
