@@ -20,5 +20,3 @@ status overview for multiple release branches
 ## this is all very wrong
 
 v0.2.2
-
-
