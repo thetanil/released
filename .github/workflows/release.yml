@@ -32,4 +32,3 @@ jobs:
           body: "Automated release for version v${{ env.VERSION }}"
           draft: true
           prerelease: true
-          token: ${{ secrets.GITHUB_TOKEN }}
