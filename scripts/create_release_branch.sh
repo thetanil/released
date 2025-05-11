@@ -4,7 +4,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Load the VERSION from the env file in the root directory
-. "$SCRIPT_DIR/../env"
+. "$SCRIPT_DIR/../VERSION.env"
 
 # Ensure VERSION is set
 if [ -z "$VERSION" ]; then
