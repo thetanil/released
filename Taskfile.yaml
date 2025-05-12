@@ -33,4 +33,6 @@ tasks:
     cmds:
       - echo "Building the project..."
       - task: democmake:build
+      - echo 'this breaks because make is not in this container, we need to build in submodule continer'
+      - echo "TODO also need to mount users git config to submodule container"
       - echo "Build completed."
